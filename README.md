@@ -1,4 +1,4 @@
-# spring-security-oauth2-test
+# spring-toolkit
 [![](https://jitpack.io/v/ahunigel/spring-toolkit.svg)](https://jitpack.io/#ahunigel/spring-toolkit)
 
 Provide an additional toolkit library for spring framework.
