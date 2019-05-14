@@ -7,6 +7,12 @@ Provide an additional toolkit library for spring framework.
 - `YamlPropertySourceFactory`
     - Spring `@PropertySource` does not support yaml by default, this factory help load yaml
 - `ReversibleConverter<A, B>`
+    - reverse converter with `.reverse()` method
+    - functional converter, used for java `stream` mapping
+    - instance of spring converter
+- JUnit 4 `@IfProfileValue` profile source enhancement
+    - `@ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)`, use environment as profile value source
+    - `@ProfileValueSourceConfiguration(MergedSystemEnvAndPropertyProfileValueSource.class)`, use environment and system properties as profile value source
 
 ## How to use
 
@@ -30,6 +36,18 @@ _Refer to https://jitpack.io/#ahunigel/spring-toolkit for details._
 ## Step 3. Sample code
 ```java
 @PropertySource(value = "classpath:custom.yml", factory = YamlPropertySourceFactory.class)
+```
+
+```java
+class FooConverter extends ReversibleConverter<Foo, Boo>
+```
+
+```java
+@ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)
+```
+
+```java
+@ProfileValueSourceConfiguration(MergedSystemEnvAndPropertyProfileValueSource.class)
 ```
 
 ## References
