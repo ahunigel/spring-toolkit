@@ -13,6 +13,7 @@ Provide an additional toolkit library for spring framework.
 - JUnit 4 `@IfProfileValue` profile source enhancement
     - `@ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)`, use environment as profile value source
     - `@ProfileValueSourceConfiguration(MergedSystemEnvAndPropertyProfileValueSource.class)`, use environment and system properties as profile value source
+- JUnit 4 `@RunTestOnWindowsOnly` annotation, restrict JUnit 4 tests running only on windows operation system
 
 ## How to use
 
@@ -36,18 +37,27 @@ _Refer to https://jitpack.io/#ahunigel/spring-toolkit for details._
 ## Step 3. Sample code
 ```java
 @PropertySource(value = "classpath:custom.yml", factory = YamlPropertySourceFactory.class)
+public class FooApplication {}
 ```
 
 ```java
-class FooConverter extends ReversibleConverter<Foo, Boo>
+class FooConverter extends ReversibleConverter<Foo, Boo> {}
 ```
 
 ```java
 @ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)
+public class FooTest {
+}
 ```
 
 ```java
 @ProfileValueSourceConfiguration(MergedSystemEnvAndPropertyProfileValueSource.class)
+public class FooTest {}
+```
+
+```java
+@RunTestOnWindowsOnly
+public class FooTest {}
 ```
 
 ## References
