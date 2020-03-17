@@ -10,10 +10,10 @@ Provide an additional toolkit library for spring framework.
     - reverse converter with `.reverse()` method
     - functional converter, used for java `stream` mapping
     - instance of spring converter
-- JUnit 4 `@IfProfileValue` profile source enhancement
+- ~~JUnit 4 `@IfProfileValue` profile source enhancement~~ Moved to https://jitpack.io/#ahunigel/spring-test-toolkit
     - `@ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)`, use environment as profile value source
     - `@ProfileValueSourceConfiguration(MergedSystemEnvAndPropertyProfileValueSource.class)`, use environment and system properties as profile value source
-- JUnit 4 `@RunTestOnWindowsOnly` annotation, restrict JUnit 4 tests running only on windows operation system
+- ~~JUnit 4 `@RunTestOnWindowsOnly` annotation, restrict JUnit 4 tests running only on windows operation system~~ Moved to https://jitpack.io/#ahunigel/spring-test-toolkit 
 
 ## How to use
 
@@ -44,6 +44,7 @@ public class FooApplication {}
 class FooConverter extends ReversibleConverter<Foo, Boo> {}
 ```
 
+~~All the following testing features are moved to https://jitpack.io/#ahunigel/spring-test-toolkit~~
 ```java
 @ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)
 public class FooTest {
@@ -64,6 +65,7 @@ public class FooTest {}
 - [Using YAML Instead of Properties](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-yaml)
 - [Spring @PropertySource using YAML](https://stackoverflow.com/questions/21271468/spring-propertysource-using-yaml)
 - [Spring YAML Configuration](https://www.baeldung.com/spring-yaml)
+- [spring-test-toolkit](https://jitpack.io/#ahunigel/spring-test-toolkit)
 
 ## TODOs
 
