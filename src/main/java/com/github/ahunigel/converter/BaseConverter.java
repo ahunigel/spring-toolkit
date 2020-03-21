@@ -3,6 +3,8 @@ package com.github.ahunigel.converter;
 import org.springframework.beans.BeanUtils;
 
 /**
+ * Base converter, functional Spring converter
+ * <p>
  * Created by nigel on 8/17/2018.
  *
  * @author nigel
