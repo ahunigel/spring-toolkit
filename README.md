@@ -3,6 +3,8 @@
 
 Provide an additional toolkit library for spring framework.
 
+Notes: All the testing features are moved to https://github.com/ahunigel/spring-test-toolkit
+
 ## Features
 - `YamlPropertySourceFactory`
     - Spring `@PropertySource` does not support yaml by default, this factory help load yaml
@@ -10,10 +12,8 @@ Provide an additional toolkit library for spring framework.
     - reverse converter with `.reverse()` method
     - functional converter, used for java `stream` mapping
     - instance of spring converter
-- ~~JUnit 4 `@IfProfileValue` profile source enhancement~~ Moved to https://jitpack.io/#ahunigel/spring-test-toolkit
-    - `@ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)`, use environment as profile value source
-    - `@ProfileValueSourceConfiguration(MergedSystemEnvAndPropertyProfileValueSource.class)`, use environment and system properties as profile value source
-- ~~JUnit 4 `@RunTestOnWindowsOnly` annotation, restrict JUnit 4 tests running only on windows operation system~~ Moved to https://jitpack.io/#ahunigel/spring-test-toolkit 
+- `BeanUtilEx`
+    - Enhance the spring `BeanUtils`, provide `Predicate` as name or value filters for copy properties
 
 ## How to use
 
@@ -44,31 +44,32 @@ public class FooApplication {}
 class FooConverter extends ReversibleConverter<Foo, Boo> {}
 ```
 
-~~All the following testing features are moved to https://jitpack.io/#ahunigel/spring-test-toolkit~~
 ```java
-@ProfileValueSourceConfiguration(EnvironmentProfileValueSource.class)
-public class FooTest {
-}
-```
+assertThat(converter.convert(foo)).isNotNull().isEqualTo(boo);
+assertThat(converter.doForward(foo)).isNotNull().isEqualTo(boo);
+assertThat(converter.doBackward(boo)).isNotNull().isEqualTo(foo);
+assertThat(converter.convert(foo, new Boo())).isNotNull().isEqualTo(boo);
+assertThat(converter.reverseConvert(boo, new Foo())).isNotNull().isEqualTo(foo);
+assertThat(converter.reverse().convert(boo)).isNotNull().isEqualTo(foo);
+assertThat(converter.reverse().reverse().convert(foo)).isNotNull().isEqualTo(boo);
 
-```java
-@ProfileValueSourceConfiguration(MergedSystemEnvAndPropertyProfileValueSource.class)
-public class FooTest {}
-```
+List<Boo> booList = Arrays.asList(foo).stream().map(converter).collect(Collectors.toList());
+booList.stream().map(converter.reverse()).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
+booList.stream().map(converter.reverse().reversible().reverse()).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
 
-```java
-@RunTestOnWindowsOnly
-public class FooTest {}
+Iterable<Boo> booList = converter.convertAll(Arrays.asList(foo));
+booList.forEach(b -> assertThat(b).isNotNull().isEqualTo(boo));
+converter.reverse().convertAll(booList).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
 ```
 
 ## References
 - [Using YAML Instead of Properties](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-yaml)
 - [Spring @PropertySource using YAML](https://stackoverflow.com/questions/21271468/spring-propertysource-using-yaml)
 - [Spring YAML Configuration](https://www.baeldung.com/spring-yaml)
-- [spring-test-toolkit](https://jitpack.io/#ahunigel/spring-test-toolkit)
+- [spring-test-toolkit](https://github.com/ahunigel/spring-test-toolkit)
 
 ## TODOs
 
 - @YamlPropertySource
-
+- @JsonPropertySource
 - Support yaml for @TestPropertySource
