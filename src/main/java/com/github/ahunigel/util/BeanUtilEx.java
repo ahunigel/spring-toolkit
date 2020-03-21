@@ -17,7 +17,8 @@ import static java.util.Objects.nonNull;
 
 /**
  * Enhance the spring {@link BeanUtils}, provide some filters for copy properties
- * <p>Created by nigel on 2020/1/17.
+ * <p>
+ * Created by nigel on 2020/1/17.
  *
  * @author nigel
  */
@@ -99,7 +100,36 @@ public class BeanUtilEx extends BeanUtils {
     copyProperties(source, target, null, Objects::nonNull);
   }
 
+  /**
+   * use {@link #copyPropertiesIgnoreValue(Object, Object, Predicate)} instead
+   *
+   * @param source
+   * @param target
+   * @param valueIgnoreFilter
+   */
+  @Deprecated
   public static void copyProperties(Object source, Object target, Predicate valueIgnoreFilter) {
+    copyProperties(source, target, null, valueIgnoreFilter.negate());
+  }
+
+  public static void copyPropertiesFilterName(Object source, Object target, Predicate nameFilter) {
+    copyProperties(source, target, nameFilter, null);
+  }
+
+  public static void copyPropertiesFilterValue(Object source, Object target, Predicate valueFilter) {
+    copyProperties(source, target, null, valueFilter);
+  }
+
+  public static void copyPropertiesIgnore(Object source, Object target, Predicate nameIgnoreFilter,
+                                          Predicate valueIgnoreFilter) {
+    copyProperties(source, target, nameIgnoreFilter.negate(), valueIgnoreFilter.negate());
+  }
+
+  public static void copyPropertiesIgnoreName(Object source, Object target, Predicate nameIgnoreFilter) {
+    copyProperties(source, target, nameIgnoreFilter.negate(), null);
+  }
+
+  public static void copyPropertiesIgnoreValue(Object source, Object target, Predicate valueIgnoreFilter) {
     copyProperties(source, target, null, valueIgnoreFilter.negate());
   }
 
