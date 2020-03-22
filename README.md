@@ -62,6 +62,9 @@ booList.forEach(b -> assertThat(b).isNotNull().isEqualTo(boo));
 converter.reverse().convertAll(booList).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
 ```
 
+```java
+BeanUtilEx.copyProperties(foo, target, name -> name.length() > 1, Objects::nonNull);
+```
 ## References
 - [Using YAML Instead of Properties](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-yaml)
 - [Spring @PropertySource using YAML](https://stackoverflow.com/questions/21271468/spring-propertysource-using-yaml)

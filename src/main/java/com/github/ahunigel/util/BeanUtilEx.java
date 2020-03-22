@@ -25,17 +25,21 @@ import static java.util.Objects.nonNull;
 public class BeanUtilEx extends BeanUtils {
 
   private BeanUtilEx() {
+    throw new InstantiationError();
   }
 
   /**
    * provide name/value filter to find out which properties should be copied.
+   * <pre>
+   *   BeanUtilEx.copyProperties(foo, target, name -> name.length() > 1, Objects::nonNull);
+   * </pre>
    *
    * @param source
    * @param target
    * @param nameFilter
    * @param valueFilter
    */
-  public static void copyProperties(Object source, Object target, Predicate nameFilter, Predicate valueFilter) {
+  public static void copyProperties(Object source, Object target, Predicate<String> nameFilter, Predicate valueFilter) {
     List<String> ignoreProperties = Lists.newArrayList();
     PropertyDescriptor[] sourcePds = getPropertyDescriptors(source.getClass());
     for (PropertyDescriptor sourcePd : sourcePds) {
@@ -101,18 +105,17 @@ public class BeanUtilEx extends BeanUtils {
   }
 
   /**
-   * use {@link #copyPropertiesIgnoreValue(Object, Object, Predicate)} instead
-   *
    * @param source
    * @param target
    * @param valueIgnoreFilter
+   * @deprecated use {@link #copyPropertiesIgnoreValue(Object, Object, Predicate)} instead
    */
   @Deprecated
   public static void copyProperties(Object source, Object target, Predicate valueIgnoreFilter) {
     copyProperties(source, target, null, valueIgnoreFilter.negate());
   }
 
-  public static void copyPropertiesFilterName(Object source, Object target, Predicate nameFilter) {
+  public static void copyPropertiesFilterName(Object source, Object target, Predicate<String> nameFilter) {
     copyProperties(source, target, nameFilter, null);
   }
 
@@ -120,12 +123,12 @@ public class BeanUtilEx extends BeanUtils {
     copyProperties(source, target, null, valueFilter);
   }
 
-  public static void copyPropertiesIgnore(Object source, Object target, Predicate nameIgnoreFilter,
+  public static void copyPropertiesIgnore(Object source, Object target, Predicate<String> nameIgnoreFilter,
                                           Predicate valueIgnoreFilter) {
     copyProperties(source, target, nameIgnoreFilter.negate(), valueIgnoreFilter.negate());
   }
 
-  public static void copyPropertiesIgnoreName(Object source, Object target, Predicate nameIgnoreFilter) {
+  public static void copyPropertiesIgnoreName(Object source, Object target, Predicate<String> nameIgnoreFilter) {
     copyProperties(source, target, nameIgnoreFilter.negate(), null);
   }
 
