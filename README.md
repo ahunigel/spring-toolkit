@@ -7,13 +7,15 @@ Notes: All the testing features are moved to https://github.com/ahunigel/spring-
 
 ## Features
 - `YamlPropertySourceFactory`
-    - Spring `@PropertySource` does not support yaml by default, this factory help load yaml
+    - Spring `@PropertySource` does not support `yml` and `yaml` by default, this factory help load yaml files
 - `ReversibleConverter<A, B>`
     - reverse converter with `.reverse()` method
     - functional converter, used for java `stream` mapping
     - instance of spring converter
 - `BeanUtilEx`
     - Enhance the spring `BeanUtils`, provide `Predicate` as name or value filters for copy properties
+- `JsonPropertySourceFactory`
+    - Spring `@PropertySource` does not support `json` by default, this factory help load json files
 
 ## How to use
 
@@ -36,7 +38,7 @@ _Refer to https://jitpack.io/#ahunigel/spring-toolkit for details._
 
 ## Step 3. Sample code
 ```java
-@PropertySource(value = "classpath:custom.yml", factory = YamlPropertySourceFactory.class)
+@PropertySource(value = {"classpath:custom.yml", "classpath:custom2.yml"}, factory = YamlPropertySourceFactory.class)
 public class FooApplication {}
 ```
 
@@ -65,6 +67,13 @@ converter.reverse().convertAll(booList).forEach(f -> assertThat(f).isNotNull().i
 ```java
 BeanUtilEx.copyProperties(foo, target, name -> name.length() > 1, Objects::nonNull);
 ```
+
+```java
+@PropertySource(value = {"classpath:custom.json", "classpath:custom.json"}, factory = JsonPropertySourceFactory.class)
+public class FooApplication {}
+```
+
+
 ## References
 - [Using YAML Instead of Properties](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-yaml)
 - [Spring @PropertySource using YAML](https://stackoverflow.com/questions/21271468/spring-propertysource-using-yaml)

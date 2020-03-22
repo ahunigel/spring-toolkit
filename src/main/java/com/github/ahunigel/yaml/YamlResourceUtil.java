@@ -1,6 +1,5 @@
 package com.github.ahunigel.yaml;
 
-import com.github.ahunigel.util.ResourceUtil;
 import org.springframework.beans.factory.config.YamlMapFactoryBean;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.env.MapPropertySource;
@@ -10,6 +9,8 @@ import org.springframework.core.io.support.EncodedResource;
 
 import java.util.Map;
 import java.util.Properties;
+
+import static com.github.ahunigel.util.ResourceUtil.getName;
 
 /**
  * Created by nigel on 2018/8/14.
@@ -33,11 +34,11 @@ public final class YamlResourceUtil {
   }
 
   public static PropertiesPropertySource toPropertiesSource(EncodedResource resource, String name) {
-    return new PropertiesPropertySource(getResourceName(resource, name), toProperties(resource));
+    return toPropertiesSource(resource.getResource(), name);
   }
 
   public static PropertiesPropertySource toPropertiesSource(Resource resource, String name) {
-    return new PropertiesPropertySource(getResourceName(resource, name), toProperties(resource));
+    return new PropertiesPropertySource(getName(name, resource), toProperties(resource));
   }
 
   public static Map<String, Object> toMap(EncodedResource resource) {
@@ -51,19 +52,11 @@ public final class YamlResourceUtil {
   }
 
   public static MapPropertySource toMapSource(EncodedResource resource, String name) {
-    return new MapPropertySource(getResourceName(resource, name), toMap(resource));
+    return toMapSource(resource.getResource(), name);
   }
 
   public static MapPropertySource toMapSource(Resource resource, String name) {
-    return new MapPropertySource(getResourceName(resource, name), toMap(resource));
-  }
-
-  private static String getResourceName(EncodedResource resource, String name) {
-    return name != null ? name : ResourceUtil.getNameForResource(resource);
-  }
-
-  private static String getResourceName(Resource resource, String name) {
-    return name != null ? name : ResourceUtil.getNameForResource(resource);
+    return new MapPropertySource(getName(name, resource), toMap(resource));
   }
 
 }

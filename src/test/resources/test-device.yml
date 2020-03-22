@@ -1,0 +1,8 @@
+test:
+  device:
+    ip: 192.168.168.1
+    port: 8080
+    portSSL: 8443
+    username: nigel
+    password: zheng
+    mainApi: app/index.php

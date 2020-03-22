@@ -1,4 +1,4 @@
-package com.github.ahunigel.yaml;
+package com.github.ahunigel.json;
 
 import com.github.ahunigel.TestApp;
 import com.github.ahunigel.TestDevice;
@@ -23,8 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = {TestApp.class, TestDevice.class})
 @AutoConfigureWebMvc
-@PropertySource(value = {"classpath:test.yml", "classpath:test-device.yml"}, factory = YamlPropertySourceFactory.class)
-public class YamlPropertySourceFactoryTest {
+@PropertySource(value = {"classpath:test.json", "classpath:test-device.json"}, factory = JsonPropertySourceFactory.class)
+public class JsonPropertySourceFactoryTest {
   @Autowired
   private Environment environment;
   @Autowired
