@@ -2,6 +2,10 @@ plugins {
     id 'java'
 }
 
+ext {
+    springBootVersion = '2.0.3.RELEASE'
+}
+
 group 'com.github.ahunigel'
 version '1.0-SNAPSHOT'
 
@@ -12,11 +16,9 @@ repositories {
 }
 
 dependencies {
-    implementation "org.springframework.boot:spring-boot:2.0.3.RELEASE"
+    implementation "org.springframework.boot:spring-boot:${springBootVersion}"
     implementation "com.google.guava:guava:20.0"
     implementation "org.projectlombok:lombok:1.18.2"
 
-    implementation "org.springframework:spring-test:5.0.7.RELEASE"
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
-    testImplementation "org.assertj:assertj-core:3.9.1"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }
