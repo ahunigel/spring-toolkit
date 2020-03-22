@@ -79,6 +79,7 @@ public class FooApplication {}
 - [Spring @PropertySource using YAML](https://stackoverflow.com/questions/21271468/spring-propertysource-using-yaml)
 - [Spring YAML Configuration](https://www.baeldung.com/spring-yaml)
 - [spring-test-toolkit](https://github.com/ahunigel/spring-test-toolkit)
+- [Load spring-boot properties from json file](https://stackoverflow.com/questions/44564166/load-spring-boot-properties-from-json-file)
 
 ## TODOs
 
