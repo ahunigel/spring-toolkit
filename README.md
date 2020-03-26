@@ -86,3 +86,6 @@ public class FooApplication {}
 - @YamlPropertySource
 - @JsonPropertySource
 - Support yaml for @TestPropertySource
+- CollectionUtilEx
+  - concat(c1, c2, ..., cN)
+  - nullToEmpty(Collection c)
