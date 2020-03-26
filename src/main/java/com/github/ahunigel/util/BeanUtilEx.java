@@ -1,6 +1,8 @@
 package com.github.ahunigel.util;
 
 import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.*;
 import org.springframework.util.ReflectionUtils;
 
@@ -22,11 +24,8 @@ import static java.util.Objects.nonNull;
  *
  * @author nigel
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BeanUtilEx extends BeanUtils {
-
-  private BeanUtilEx() {
-    throw new InstantiationError();
-  }
 
   /**
    * provide name/value filter to find out which properties should be copied.

@@ -16,6 +16,9 @@ Notes: All the testing features are moved to https://github.com/ahunigel/spring-
     - Enhance the spring `BeanUtils`, provide `Predicate` as name or value filters for copy properties
 - `JsonPropertySourceFactory`
     - Spring `@PropertySource` does not support `json` by default, this factory help load json files
+- `CollectionUtilEx`
+    - concat(c1, c2, ..., cN)
+    - nullToEmpty(Collection c)
 
 ## How to use
 
@@ -39,38 +42,50 @@ _Refer to https://jitpack.io/#ahunigel/spring-toolkit for details._
 ## Step 3. Sample code
 ```java
 @PropertySource(value = {"classpath:custom.yml", "classpath:custom2.yml"}, factory = YamlPropertySourceFactory.class)
-public class FooApplication {}
+public class FooApplication {
+}
 ```
 
 ```java
-class FooConverter extends ReversibleConverter<Foo, Boo> {}
+public class FooConverter extends ReversibleConverter<Foo, Boo> {
+}
 ```
 
 ```java
-assertThat(converter.convert(foo)).isNotNull().isEqualTo(boo);
-assertThat(converter.doForward(foo)).isNotNull().isEqualTo(boo);
-assertThat(converter.doBackward(boo)).isNotNull().isEqualTo(foo);
-assertThat(converter.convert(foo, new Boo())).isNotNull().isEqualTo(boo);
-assertThat(converter.reverseConvert(boo, new Foo())).isNotNull().isEqualTo(foo);
-assertThat(converter.reverse().convert(boo)).isNotNull().isEqualTo(foo);
-assertThat(converter.reverse().reverse().convert(foo)).isNotNull().isEqualTo(boo);
-
-List<Boo> booList = Arrays.asList(foo).stream().map(converter).collect(Collectors.toList());
-booList.stream().map(converter.reverse()).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
-booList.stream().map(converter.reverse().reversible().reverse()).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
-
-Iterable<Boo> booList = converter.convertAll(Arrays.asList(foo));
-booList.forEach(b -> assertThat(b).isNotNull().isEqualTo(boo));
-converter.reverse().convertAll(booList).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
+public class FooTest {
+  @Test
+  public void testFoo() {
+    assertThat(converter.convert(foo)).isNotNull().isEqualTo(boo);
+    assertThat(converter.doForward(foo)).isNotNull().isEqualTo(boo);
+    assertThat(converter.doBackward(boo)).isNotNull().isEqualTo(foo);
+    assertThat(converter.convert(foo, new Boo())).isNotNull().isEqualTo(boo);
+    assertThat(converter.reverseConvert(boo, new Foo())).isNotNull().isEqualTo(foo);
+    assertThat(converter.reverse().convert(boo)).isNotNull().isEqualTo(foo);
+    assertThat(converter.reverse().reverse().convert(foo)).isNotNull().isEqualTo(boo);
+    
+    List<Boo> booList = Arrays.asList(foo).stream().map(converter).collect(Collectors.toList());
+    booList.stream().map(converter.reverse()).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
+    booList.stream().map(converter.reverse().reversible().reverse()).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
+    
+    Iterable<Boo> booList = converter.convertAll(Arrays.asList(foo));
+    booList.forEach(b -> assertThat(b).isNotNull().isEqualTo(boo));
+    converter.reverse().convertAll(booList).forEach(f -> assertThat(f).isNotNull().isEqualTo(foo));
+  }
+}
 ```
 
 ```java
-BeanUtilEx.copyProperties(foo, target, name -> name.length() > 1, Objects::nonNull);
+public class FooUtil {
+  public static void copy(Foo foo, Foo target) {
+    BeanUtilEx.copyProperties(foo, target, name -> name.length() > 1, Objects::nonNull);
+  }
+}
 ```
 
 ```java
 @PropertySource(value = {"classpath:custom.json", "classpath:custom.json"}, factory = JsonPropertySourceFactory.class)
-public class FooApplication {}
+public class FooApplication {
+}
 ```
 
 
@@ -86,6 +101,4 @@ public class FooApplication {}
 - @YamlPropertySource
 - @JsonPropertySource
 - Support yaml for @TestPropertySource
-- CollectionUtilEx
-  - concat(c1, c2, ..., cN)
-  - nullToEmpty(Collection c)
+

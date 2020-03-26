@@ -1,5 +1,7 @@
 package com.github.ahunigel.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.Resource;
@@ -14,11 +16,8 @@ import java.util.List;
  *
  * @author nigel
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ResourceUtil {
-
-  private ResourceUtil() {
-    throw new InstantiationError();
-  }
 
   public static String getNameForResource(EncodedResource resource) {
     return getNameForResource(resource.getResource());
