@@ -96,6 +96,11 @@ public class FooApplication {
 - [spring-test-toolkit](https://github.com/ahunigel/spring-test-toolkit)
 - [Load spring-boot properties from json file](https://stackoverflow.com/questions/44564166/load-spring-boot-properties-from-json-file)
 
+## See Also
+- [spring-toolkit](https://jitpack.io/#ahunigel/spring-toolkit)
+- [spring-test-toolkit](https://github.com/ahunigel/spring-test-toolkit)
+- [spring-security-oauth2-test](https://github.com/ahunigel/spring-security-oauth2-test)
+
 ## TODOs
 
 - @YamlPropertySource
