@@ -5,6 +5,7 @@ import com.google.common.collect.Sets;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -36,6 +37,16 @@ public class CollectionUtilExTest {
     s1 = Sets.newHashSet("s1e1", "s1e2", "s1e3", "s1e4");
     setWithNull = Sets.newHashSet("s2e1", "s2e2", null); //size=3
     setWithNull.add(null);
+  }
+
+  @Test
+  public void isNotEmpty() {
+    assertThat(CollectionUtilEx.isNotEmpty(null)).isFalse();
+    assertThat(CollectionUtilEx.isNotEmpty(new ArrayList<>(0))).isFalse();
+    assertThat(CollectionUtilEx.isNotEmpty(c1)).isTrue();
+    assertThat(CollectionUtilEx.isNotEmpty(listWithNull)).isTrue();
+    assertThat(CollectionUtilEx.isNotEmpty(s1)).isTrue();
+    assertThat(CollectionUtilEx.isNotEmpty(setWithNull)).isTrue();
   }
 
   @Test
