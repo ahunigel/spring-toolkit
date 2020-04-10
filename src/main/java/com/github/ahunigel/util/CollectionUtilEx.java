@@ -24,6 +24,10 @@ import static java.util.Objects.nonNull;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CollectionUtilEx extends CollectionUtils {
 
+  public static <T> boolean isNotEmpty(Collection<T> t) {
+    return !isEmpty(t);
+  }
+
   public static <T> Collection<T> nullToEmpty(Collection<T> t) {
     return nonNull(t) ? t : Collections.emptyList();
   }
