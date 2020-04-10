@@ -19,6 +19,7 @@ Notes: All the testing features are moved to https://github.com/ahunigel/spring-
 - `CollectionUtilEx`
     - concat(c1, c2, ..., cN)
     - nullToEmpty(Collection c)
+    - isNotEmpty(Collection c)
 
 ## How to use
 
