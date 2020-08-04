@@ -4,12 +4,10 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -51,4 +49,8 @@ public class CollectionUtilEx extends CollectionUtils {
     return concat(collections).stream().collect(Collectors.toSet());
   }
 
+  public static <K, V> Map<K, V> zipToMap(List<K> keys, List<V> values) {
+    return IntStream.range(0, keys.size()).boxed()
+        .collect(Collectors.toMap(keys::get, values::get));
+  }
 }
