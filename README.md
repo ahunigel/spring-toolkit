@@ -20,6 +20,8 @@ Notes: All the testing features are moved to https://github.com/ahunigel/spring-
     - concat(c1, c2, ..., cN)
     - nullToEmpty(Collection c)
     - isNotEmpty(Collection c)
+- `DialectUtil`
+    - getInExpressionCountLimit(EntityManager entityManager)
 
 ## How to use
 
