@@ -4,6 +4,8 @@ plugins {
 
 ext {
     springBootVersion = '2.0.3.RELEASE'
+    springCloudVersion = '2.0.2.RELEASE'
+    springVersion = '5.0.7.RELEASE'
 }
 
 group 'com.github.ahunigel'
@@ -17,6 +19,7 @@ repositories {
 
 dependencies {
     implementation "org.springframework.boot:spring-boot:${springBootVersion}"
+    implementation "org.springframework.security:spring-security-core:${springVersion}"
     implementation "com.google.guava:guava:20.0"
     implementation "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final"
     implementation "org.hibernate:hibernate-core:5.2.16.Final"

@@ -22,6 +22,9 @@ Notes: All the testing features are moved to https://github.com/ahunigel/spring-
     - isNotEmpty(Collection c)
 - `DialectUtil`
     - getInExpressionCountLimit(EntityManager entityManager)
+- `AssertEx`
+    - supported(boolean expression, String message)
+    - hasPermission(boolean expression, String message)
 
 ## How to use
 
