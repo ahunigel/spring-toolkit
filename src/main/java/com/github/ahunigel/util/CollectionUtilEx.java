@@ -2,6 +2,7 @@ package com.github.ahunigel.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
@@ -49,8 +50,29 @@ public class CollectionUtilEx extends CollectionUtils {
     return concat(collections).stream().collect(Collectors.toSet());
   }
 
+  /**
+   * zip to list to a map, keys or values should not have null members
+   *
+   * @throws NullPointerException
+   */
   public static <K, V> Map<K, V> zipToMap(List<K> keys, List<V> values) {
     return IntStream.range(0, keys.size()).boxed()
         .collect(Collectors.toMap(keys::get, values::get));
+  }
+
+  /**
+   * zip to list to a map, keys have null members
+   *
+   * @throws NullPointerException
+   */
+  public static <K, V> Map<K, V> zipToMapNullable(List<K> keys, List<V> values) {
+    Assert.isTrue(keys.size() == values.size(), "");
+    Map<K, V> map = new HashMap<>();
+
+    for (int i = 0; i < keys.size(); i++) {
+      map.put(keys.get(i), values.get(i));
+    }
+
+    return map;
   }
 }
