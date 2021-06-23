@@ -1,5 +1,4 @@
 plugins {
-    id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "io.freefair.lombok" version "5.3.3.3"
     id 'java-library'
 }
@@ -20,14 +19,10 @@ repositories {
     mavenCentral()
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
-
 dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    //implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+
     api "org.springframework.boot:spring-boot"
     implementation "org.springframework.security:spring-security-core"
     implementation "org.hibernate:hibernate-core"
