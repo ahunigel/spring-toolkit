@@ -5,10 +5,7 @@ plugins {
 }
 
 ext {
-    set('springCloudVersion', "2020.0.+")
-    set('springBootVersion', "2.5.+")
-    set('springCloudStreamVersion', "3.1.2")
-    set('springVersion', "5.4.1")
+    set('springBootVersion', "2.6.+")
 }
 
 group 'com.github.ahunigel'
@@ -22,7 +19,6 @@ repositories {
 
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
-    //implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
 
     api "org.springframework.boot:spring-boot"
     implementation "org.springframework.security:spring-security-core"
