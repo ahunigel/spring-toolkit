@@ -113,4 +113,4 @@ public class FooApplication {
 - @YamlPropertySource
 - @JsonPropertySource
 - Support yaml for @TestPropertySource
-
+- SpringStreamBinding destination prefix/suffix by active profile
