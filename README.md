@@ -25,6 +25,8 @@ Notes: All the testing features are moved to https://github.com/ahunigel/spring-
 - `AssertEx`
     - supported(boolean expression, String message)
     - hasPermission(boolean expression, String message)
+- `BeanConvertUtils`
+    - support convert <S> type to <T> type
 
 ## How to use
 
