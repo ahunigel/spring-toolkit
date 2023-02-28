@@ -12,7 +12,7 @@ repositories {
 }
 
 ext {
-    springBootVersion = '2.7.8'
+    springBootVersion = '3.0.3'
 }
 
 dependencies {
@@ -20,7 +20,7 @@ dependencies {
 
     api "org.springframework.boot:spring-boot"
     implementation "org.springframework.security:spring-security-core"
-    implementation "org.hibernate:hibernate-core"
+    implementation "org.hibernate:hibernate-core:5.6.15.Final"
 
     api "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final"
     implementation 'com.google.guava:guava:31.1-jre'
