@@ -104,6 +104,7 @@ public class FooApplication {
 - [Load spring-boot properties from json file](https://stackoverflow.com/questions/44564166/load-spring-boot-properties-from-json-file)
 
 ## See Also
+- [springkit-bom](https://github.com/ahunigel/springkit-bom)
 - [spring-toolkit](https://github.com/ahunigel/spring-toolkit)
 - [spring-test-toolkit](https://github.com/ahunigel/spring-test-toolkit)
 - [spring-security-oauth2-test](https://github.com/ahunigel/spring-security-oauth2-test)
