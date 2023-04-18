@@ -26,7 +26,7 @@ dependencies {
     implementation 'com.google.guava:guava:31.1-jre'
 
     testImplementation group: 'junit', name: 'junit'
-    api 'net.ttddyy:datasource-proxy:1.8.1'
+    api 'net.ttddyy:datasource-proxy:1.9'
     testImplementation "org.springframework.boot:spring-boot-starter-test"
 
     testImplementation platform("org.spockframework:spock-bom:2.3-groovy-4.0")
