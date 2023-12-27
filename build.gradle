@@ -33,8 +33,13 @@ dependencies {
     testImplementation 'org.spockframework:spock-core'
     testImplementation 'net.bytebuddy:byte-buddy' // allows mocking of classes (in addition to interfaces)
     testImplementation "org.objenesis:objenesis:3.3"
-}
 
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+}
+// Make all tests use JUnit 5
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
 publishing {
     repositories {
         maven {
