@@ -18,15 +18,15 @@ ext {
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
 
-    api "org.springframework.boot:spring-boot"
+    implementation "org.springframework.boot:spring-boot"
     implementation "org.springframework.security:spring-security-core"
     implementation "org.hibernate:hibernate-core:6.6.1.Final"
 
-    api "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final"
+    implementation "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final"
     implementation 'com.google.guava:guava:33.3.1-jre'
 
     testImplementation group: 'junit', name: 'junit'
-    api 'net.ttddyy:datasource-proxy:1.10'
+    implementation 'net.ttddyy:datasource-proxy:1.10'
     testImplementation "org.springframework.boot:spring-boot-starter-test"
 
     testImplementation platform("org.spockframework:spock-bom:2.3-groovy-4.0")
