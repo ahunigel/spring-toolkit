@@ -23,7 +23,7 @@ dependencies {
     implementation "org.hibernate:hibernate-core:6.6.4.Final"
 
     implementation "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final"
-    implementation 'com.google.guava:guava:33.3.1-jre'
+    implementation 'com.google.guava:guava:33.4.0-jre'
 
     testImplementation group: 'junit', name: 'junit'
     implementation 'net.ttddyy:datasource-proxy:1.10.1'
