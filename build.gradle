@@ -32,6 +32,7 @@ dependencies {
     testImplementation 'net.bytebuddy:byte-buddy' // allows mocking of classes (in addition to interfaces)
     testImplementation "org.objenesis:objenesis:3.5"
 
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
 }
 // Make all tests use JUnit 5
