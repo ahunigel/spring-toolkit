@@ -22,7 +22,6 @@ class ResourceUtilTest extends Specification {
         result instanceof PropertySource
         result instanceof OriginTrackedMapPropertySource
 
-        and:
         result.name == 'yml-test'
         result.getProperty('nz.int') == 5
         result.getProperty('nz.float') == 6.0f

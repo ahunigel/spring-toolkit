@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -21,9 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author nigel
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = {TestApp.class, TestDevice.class})
-@AutoConfigureWebMvc
-@PropertySource(value = {"classpath:test.yml", "classpath:test-device.yml"}, factory = YamlPropertySourceFactory.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = {TestApp.class, TestDevice.class, YamlPropertySourceFactoryTest.YamlTestConfig.class})
 public class YamlPropertySourceFactoryTest {
   @Autowired
   private Environment environment;
@@ -64,5 +61,9 @@ public class YamlPropertySourceFactoryTest {
     assertThat(nzInt).isNotZero().isEqualTo(5);
     assertThat(nzFloat).isNotNaN().isEqualTo(6.0f);
     assertThat(nzString).isNotNull().isEqualTo("nigel");
+  }
+
+  @PropertySource(value = {"classpath:test.yml", "classpath:test-device.yml"}, factory = YamlPropertySourceFactory.class)
+  public static class YamlTestConfig {
   }
 }
