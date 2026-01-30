@@ -10,7 +10,19 @@ repositories {
 }
 
 ext {
-    springBootVersion = '3.4.13'
+    springBootVersion = '4.0.2'
+    groovyVersion = '4.0.24'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "org.apache.groovy:groovy:${groovyVersion}"
+        force "org.apache.groovy:groovy-json:${groovyVersion}"
+        force "org.apache.groovy:groovy-nio:${groovyVersion}"
+        force "org.apache.groovy:groovy-sql:${groovyVersion}"
+        force "org.apache.groovy:groovy-xml:${groovyVersion}"
+        force "org.apache.groovy:groovy-templates:${groovyVersion}"
+    }
 }
 
 dependencies {
