@@ -11,7 +11,7 @@ repositories {
 
 ext {
     springBootVersion = '4.0.2'
-    groovyVersion = '4.0.24'
+    groovyVersion = '5.0.4'
 }
 
 configurations.all {
