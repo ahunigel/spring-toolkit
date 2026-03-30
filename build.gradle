@@ -10,7 +10,7 @@ repositories {
 }
 
 ext {
-    springBootVersion = '4.0.4'
+    springBootVersion = '4.0.5'
     groovyVersion = '4.0.24'
 }
 
